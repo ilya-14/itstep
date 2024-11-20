@@ -59,7 +59,7 @@ nick2 = Parent()
 nick3 = Child()'''
 
 
-class Computer:
+'''class Computer:
 
     def calculate(self):
         print("Calculating…")
@@ -79,4 +79,18 @@ class SmartPhone(Display, Computer):
 iphone = SmartPhone()
 iphone.calculate()
 iphone.display()
-iphone.print_info()
+iphone.print_info()'''
+
+class Class1:
+
+1 usage new
+def x1(self):
+print("Class1")
+1 usage new
+class Class2(Class1):
+1 usage new
+def x2(self):
+super().x1()
+print("Class2)
+name = Class2()
+name.x2()
