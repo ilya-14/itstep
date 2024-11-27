@@ -85,4 +85,3 @@ samolyot = Samolyot(900, "Boeing 747")
 
 print(avtomobil.peremishchennya())
 print(samolyot.peremishchennya())
-
