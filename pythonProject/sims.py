@@ -191,7 +191,60 @@ class Job:
         self.salary = job_list[self.job]["salary"]
         self.gladness_less = job_list[self.job]["gladness_less"]
 
+
+class Pet:
+    def __init__(self, name, species):
+        self.name = name
+        self.species = species
+        self.age = 0
+        self.hunger = 50
+        self.happiness = 50
+
+    def feed(self):
+        if self.hunger < 100:
+            self.hunger += 20
+            print(f"{self.name} поїв. Ситість: {self.hunger}")
+        else:
+            print(f"{self.name} не голодний.")
+
+    def play(self):
+        if self.happiness < 100:
+            self.happiness += 10
+            print(f"{self.name} погрався. Щастя: {self.happiness}")
+        else:
+            print(f"{self.name} вже щасливий.")
+
+    def rest(self):
+        self.hunger -= 10
+        self.happiness += 5
+        print(f"{self.name} відпочиває. Ситість: {self.hunger}, Щастя: {self.happiness}")
+
+    def age_one_day(self):
+        self.age += 1
+        print(f"{self.name} став старший на один день! Вік: {self.age}")
+        self.hunger -= 5
+        self.happiness -= 5
+        if self.hunger < 0: self.hunger = 0
+        if self.happiness < 0: self.happiness = 0
+
+    def rest(self):
+        if self.money > 10:
+            self.money -= 10
+            print(f"{self.name} відпочиває. Гроші: {self.money}")
+        else:
+            print(f"{self.name} не може відпочити, недостатньо грошей.")
+
+
 nick = Human(name="Nick")
 for day in range(1,8):
     if nick.live(day) == False:
         break
+
+cat = Pet("Барсик", "кіт")
+
+cat.feed()
+cat.play()
+cat.rest()
+
+cat.age_one_day()
+
