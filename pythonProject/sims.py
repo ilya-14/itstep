@@ -234,6 +234,50 @@ class Pet:
         else:
             print(f"{self.name} не може відпочити, недостатньо грошей.")
 
+class Product:
+    def __init__(self, name, price, stock):
+        self.name = name
+        self.price = price
+        self.stock = stock
+
+    def reduce_stock(self):
+        if self.stock > 0:
+            self.stock -= 1
+        else:
+            print(f"Товар {self.name} вийшов із наявності!")
+
+    def __str__(self):
+        return f"Товар: {self.name}, Ціна: {self.price}, Наявність: {self.stock}"
+
+
+class Cart:
+    def __init__(self):
+        self.items = []
+
+    def add_product(self, product):
+        if product.stock > 0:
+            self.items.append(product)
+            product.reduce_stock()
+            print(f"Товар {product.name} додано до кошика.")
+        else:
+            print(f"Товар {product.name} недоступний.")
+
+    def remove_product(self, product):
+        if product in self.items:
+            self.items.remove(product)
+            print(f"Товар {product.name} видалено з кошика.")
+        else:
+            print(f"Товар {product.name} немає в кошику.")
+
+    def calculate_total(self):
+        total = sum(product.price for product in self.items)
+        return total
+
+    def display_cart(self):
+        for product in self.items:
+            print(product)
+        print(f"Загальна вартість: {self.calculate_total()}")
+
 
 nick = Human(name="Nick")
 for day in range(1,8):
@@ -247,4 +291,18 @@ cat.play()
 cat.rest()
 
 cat.age_one_day()
-    sdf
+
+product1 = Product("Ноутбук", 1000, 5)
+product2 = Product("Мишка", 50, 10)
+product3 = Product("Клавіатура", 120, 0)
+
+cart = Cart()
+
+cart.add_product(product1)
+cart.add_product(product2)
+cart.add_product(product3)
+
+cart.display_cart()
+
+cart.remove_product(product2)
+cart.display_cart()
