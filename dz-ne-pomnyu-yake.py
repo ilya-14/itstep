@@ -1,4 +1,3 @@
-
 class Tvarina:
     def __init__(self, imya, vid, vozrast):
         self.imya = imya
